@@ -11,18 +11,18 @@ public class TelevisionController {
         return ResponseEntity.ok("television");
     }
 
-    @GetMapping("/television/{id}")
+    @GetMapping("/televisions/{id}")
     public ResponseEntity<String> getTelevisionById(@PathVariable String id) {
         return ResponseEntity.ok("television1");
     }
 
     @PostMapping("/televisions")
-    public ResponseEntity<String> addTelevision() {
+    public ResponseEntity<String> addTelevision(@RequestBody Television television) {
         return ResponseEntity.created(null).body("television");
     }
 
     @PutMapping("/televisions/{id}")
-    public ResponseEntity<String> updateTelevision(@PathVariable String id) {
+    public ResponseEntity<String> updateTelevision(@PathVariable String id @RequestBody Television television) {
         return ResponseEntity.noContent().build();
     }
 
