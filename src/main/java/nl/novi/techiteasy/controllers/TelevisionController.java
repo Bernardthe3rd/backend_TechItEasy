@@ -1,5 +1,6 @@
 package nl.novi.techiteasy.controllers;
 
+import nl.novi.techiteasy.models.Television;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +23,7 @@ public class TelevisionController {
     }
 
     @PutMapping("/televisions/{id}")
-    public ResponseEntity<String> updateTelevision(@PathVariable String id @RequestBody Television television) {
+    public ResponseEntity<String> updateTelevision(@PathVariable String id, @RequestBody Television television) {
         return ResponseEntity.noContent().build();
     }
 
