@@ -10,5 +10,4 @@ public class RecordNotFoundException extends RuntimeException {
         super(message);
     }
 
-// adding comment for feedback mark
 }
