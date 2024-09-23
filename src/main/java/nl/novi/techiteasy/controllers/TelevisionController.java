@@ -1,12 +1,19 @@
 package nl.novi.techiteasy.controllers;
 
 import nl.novi.techiteasy.models.Television;
+import nl.novi.techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/televisions")
 public class TelevisionController {
+
+    private final TelevisionService televisionService;
+
+    public TelevisionController(TelevisionService televisionService) {
+        this.televisionService = televisionService;
+    }
 
     @GetMapping
     public ResponseEntity<String> getAllTelevisions() {
