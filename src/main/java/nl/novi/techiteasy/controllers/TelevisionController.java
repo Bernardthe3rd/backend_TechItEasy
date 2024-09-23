@@ -5,29 +5,30 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/televisions")
 public class TelevisionController {
 
-    @GetMapping("/televisions")
+    @GetMapping
     public ResponseEntity<String> getAllTelevisions() {
         return ResponseEntity.ok("television");
     }
 
-    @GetMapping("/televisions/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<String> getTelevisionById(@PathVariable String id) {
         return ResponseEntity.ok("television1");
     }
 
-    @PostMapping("/televisions")
+    @PostMapping
     public ResponseEntity<String> addTelevision(@RequestBody Television television) {
         return ResponseEntity.created(null).body("television");
     }
 
-    @PutMapping("/televisions/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<String> updateTelevision(@PathVariable String id, @RequestBody Television television) {
         return ResponseEntity.noContent().build();
     }
 
-    @DeleteMapping("/televisions/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTelevision(@PathVariable String id) {
         return ResponseEntity.noContent().build();
     }

@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -30,12 +31,12 @@ public class Television {
     private Boolean ambiLight;
     private int originalStock;
     private int sold;
-    private Date lastSold;
+    private LocalDate lastSold;
 
     public Television() {
     }
 
-    public Television(Long id, String type, String brand, String name, double price, double availableSize, int refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, int originalStock, int sold, Date lastSold) {
+    public Television(Long id, String type, String brand, String name, double price, double availableSize, int refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, int originalStock, int sold, LocalDate lastSold) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -192,11 +193,11 @@ public class Television {
         this.sold = sold;
     }
 
-    public Date getLastSold() {
+    public LocalDate getLastSold() {
         return lastSold;
     }
 
-    public void setLastSold(Date lastSold) {
+    public void setLastSold(LocalDate lastSold) {
         this.lastSold = lastSold;
     }
 }
