@@ -3,10 +3,13 @@ package nl.novi.techiteasy.dtos;
 import nl.novi.techiteasy.models.Television;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class TelevisionMapper {
 
-    public static TelevisionDto toTelevisionDto(Television television) {
+    public TelevisionDto toTelevisionDto(Television television) {
         var dto = new TelevisionDto();
 
         dto.setType(television.getType());
@@ -30,7 +33,7 @@ public class TelevisionMapper {
         return dto;
     }
 
-    public static Television toTelevision(TelevisionDto dto) {
+    public Television toTelevision(TelevisionInputDto dto) {
         var television = new Television();
 
         television.setType(dto.getType());
@@ -52,5 +55,15 @@ public class TelevisionMapper {
         television.setLastSold(dto.getLastSold());
 
         return television;
+    }
+
+    public List<TelevisionDto> televisionsToTelevisionDtos(List<Television> televisions) {
+        List<TelevisionDto> dtos = new ArrayList<>();
+        for (Television television : televisions) {
+            TelevisionDto dto = toTelevisionDto(television);
+            dtos.add(dto);
+        }
+
+        return dtos;
     }
 }

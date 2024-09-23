@@ -25,17 +25,17 @@ public class TelevisionInputDto {
     private String screenType;
     private String screenQuality;
 
-    @NotEmpty(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false")
     private Boolean smartTv;
-    @NotEmpty(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false")
     private Boolean wifi;
-    @NotEmpty(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false")
     private Boolean voiceControl;
-    @NotEmpty(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false")
     private Boolean hdr;
-    @NotEmpty(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false")
     private Boolean bluetooth;
-    @NotEmpty(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false")
     private Boolean ambiLight;
     private int originalStock;
     private int sold;
@@ -107,51 +107,51 @@ public class TelevisionInputDto {
         this.screenQuality = screenQuality;
     }
 
-    public @NotEmpty(message = "Please fill in true or false") Boolean getSmartTv() {
+    public @NotNull(message = "Please fill in true or false") Boolean getSmartTv() {
         return smartTv;
     }
 
-    public void setSmartTv(@NotEmpty(message = "Please fill in true or false") Boolean smartTv) {
+    public void setSmartTv(@NotNull(message = "Please fill in true or false") Boolean smartTv) {
         this.smartTv = smartTv;
     }
 
-    public @NotEmpty(message = "Please fill in true or false") Boolean getWifi() {
+    public @NotNull(message = "Please fill in true or false") Boolean getWifi() {
         return wifi;
     }
 
-    public void setWifi(@NotEmpty(message = "Please fill in true or false") Boolean wifi) {
+    public void setWifi(@NotNull(message = "Please fill in true or false") Boolean wifi) {
         this.wifi = wifi;
     }
 
-    public @NotEmpty(message = "Please fill in true or false") Boolean getVoiceControl() {
+    public @NotNull(message = "Please fill in true or false") Boolean getVoiceControl() {
         return voiceControl;
     }
 
-    public void setVoiceControl(@NotEmpty(message = "Please fill in true or false") Boolean voiceControl) {
+    public void setVoiceControl(@NotNull(message = "Please fill in true or false") Boolean voiceControl) {
         this.voiceControl = voiceControl;
     }
 
-    public @NotEmpty(message = "Please fill in true or false") Boolean getHdr() {
+    public @NotNull(message = "Please fill in true or false") Boolean getHdr() {
         return hdr;
     }
 
-    public void setHdr(@NotEmpty(message = "Please fill in true or false") Boolean hdr) {
+    public void setHdr(@NotNull(message = "Please fill in true or false") Boolean hdr) {
         this.hdr = hdr;
     }
 
-    public @NotEmpty(message = "Please fill in true or false") Boolean getBluetooth() {
+    public @NotNull(message = "Please fill in true or false") Boolean getBluetooth() {
         return bluetooth;
     }
 
-    public void setBluetooth(@NotEmpty(message = "Please fill in true or false") Boolean bluetooth) {
+    public void setBluetooth(@NotNull(message = "Please fill in true or false") Boolean bluetooth) {
         this.bluetooth = bluetooth;
     }
 
-    public @NotEmpty(message = "Please fill in true or false") Boolean getAmbiLight() {
+    public @NotNull(message = "Please fill in true or false") Boolean getAmbiLight() {
         return ambiLight;
     }
 
-    public void setAmbiLight(@NotEmpty(message = "Please fill in true or false") Boolean ambiLight) {
+    public void setAmbiLight(@NotNull(message = "Please fill in true or false") Boolean ambiLight) {
         this.ambiLight = ambiLight;
     }
 
