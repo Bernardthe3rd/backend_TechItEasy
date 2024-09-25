@@ -16,7 +16,7 @@ public class ExceptionController {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> handleGeneralException(Exception ex) {
-        String message = "Unexpected error" + ex.getMessage();
+        String message = "Unexpected error " + ex.getMessage();
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 

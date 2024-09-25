@@ -12,6 +12,7 @@ public class TelevisionMapper {
     public TelevisionDto toTelevisionDto(Television television) {
         var dto = new TelevisionDto();
 
+        dto.setId(television.getId());
         dto.setType(television.getType());
         dto.setBrand(television.getBrand());
         dto.setName(television.getName());
@@ -33,8 +34,7 @@ public class TelevisionMapper {
         return dto;
     }
 
-    public Television toTelevision(TelevisionInputDto dto) {
-        var television = new Television();
+    public Television toTelevision(TelevisionInputDto dto, Television television) {
 
         television.setType(dto.getType());
         television.setBrand(dto.getBrand());
@@ -55,6 +55,11 @@ public class TelevisionMapper {
         television.setLastSold(dto.getLastSold());
 
         return television;
+    }
+
+    public Television toTelevision(TelevisionInputDto dto) {
+        var television = new Television();
+        return toTelevision(dto, television);
     }
 
     public List<TelevisionDto> televisionsToTelevisionDtos(List<Television> televisions) {

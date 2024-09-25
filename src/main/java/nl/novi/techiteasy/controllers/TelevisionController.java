@@ -3,7 +3,6 @@ package nl.novi.techiteasy.controllers;
 import jakarta.validation.Valid;
 import nl.novi.techiteasy.dtos.TelevisionDto;
 import nl.novi.techiteasy.dtos.TelevisionInputDto;
-import nl.novi.techiteasy.models.Television;
 import nl.novi.techiteasy.repositories.TelevisionRepository;
 import nl.novi.techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
@@ -45,10 +44,10 @@ public class TelevisionController {
 
     @PutMapping("/{id}")
     public ResponseEntity<TelevisionDto> updateTelevision(@PathVariable Long id, @RequestBody TelevisionInputDto television) {
-        TelevisionDto getTelevision = televisionService.getTelevision(id);
         TelevisionDto updatedTelevision = televisionService.updateTelevision(id, television);
         return ResponseEntity.ok(updatedTelevision);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTelevision(@PathVariable Long id) {

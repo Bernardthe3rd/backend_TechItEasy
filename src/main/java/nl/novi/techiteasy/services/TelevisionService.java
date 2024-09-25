@@ -3,6 +3,7 @@ package nl.novi.techiteasy.services;
 import nl.novi.techiteasy.dtos.TelevisionDto;
 import nl.novi.techiteasy.dtos.TelevisionInputDto;
 import nl.novi.techiteasy.dtos.TelevisionMapper;
+import nl.novi.techiteasy.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy.models.Television;
 import nl.novi.techiteasy.repositories.TelevisionRepository;
 import org.springframework.stereotype.Service;
@@ -41,10 +42,12 @@ public class TelevisionService {
     }
 
     public TelevisionDto updateTelevision(Long id, TelevisionInputDto television) {
-        Television getTelevision = televisionRepository.getReferenceById(id);
-        Television updatedTelevision = televisionMapper.toTelevision(television);
+        Television getTelevision = televisionRepository.findById(id).orElseThrow(() -> new RecordNotFoundException());
+        Television updatedTelevision = televisionMapper.toTelevision(television, getTelevision);
+//        updatedTelevision.setId(id);
         return televisionMapper.toTelevisionDto(televisionRepository.save(updatedTelevision));
     }
+
 
     public TelevisionDto deleteTelevision(Long id) {
         televisionRepository.deleteById(id);
