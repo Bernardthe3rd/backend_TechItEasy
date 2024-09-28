@@ -2,6 +2,8 @@ package nl.novi.techiteasy.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Wallbrackets")
 public class WallBracket {
@@ -14,6 +16,9 @@ public class WallBracket {
     private boolean adjustable;
     private String name;
     private double price;
+
+    @ManyToMany(mappedBy = "wallBracket")
+    private List<Television> televisionList;
 
 //    public WallBracket() {
 //
@@ -65,5 +70,13 @@ public class WallBracket {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public List<Television> getTelevisionList() {
+        return televisionList;
+    }
+
+    public void setTelevisionList(List<Television> televisionList) {
+        this.televisionList = televisionList;
     }
 }

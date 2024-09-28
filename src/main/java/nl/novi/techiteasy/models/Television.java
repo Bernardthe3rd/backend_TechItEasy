@@ -5,6 +5,7 @@ import nl.novi.techiteasy.AvailableSize;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Televisions")
@@ -34,6 +35,18 @@ public class Television {
 
     @OneToOne(cascade = CascadeType.ALL)
     private RemoteController remoteController;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ci_module_id")
+    private CiModule ciModule;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "television_wallbrackets",
+            joinColumns = @JoinColumn(name = "television"),
+            inverseJoinColumns = @JoinColumn(name = "wallbracket")
+    )
+    private List<WallBracket> wallBracket;
 
 //    public Television() {
 //    }
@@ -209,5 +222,21 @@ public class Television {
 
     public void setRemoteController(RemoteController remoteController) {
         this.remoteController = remoteController;
+    }
+
+    public CiModule getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(CiModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public List<WallBracket> getWallBracket() {
+        return wallBracket;
+    }
+
+    public void setWallBracket(List<WallBracket> wallBracket) {
+        this.wallBracket = wallBracket;
     }
 }

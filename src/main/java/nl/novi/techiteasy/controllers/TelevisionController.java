@@ -27,6 +27,7 @@ public class TelevisionController {
     @GetMapping
     public ResponseEntity<List<TelevisionDto>> getAllTelevisions() {
         List<TelevisionDto> televisions = televisionService.getTelevisions();
+        System.out.println(televisions);
         return ResponseEntity.ok(televisions);
     }
 
@@ -59,6 +60,18 @@ public class TelevisionController {
     @PutMapping("/{id}/remotecontroller")
     public ResponseEntity<TelevisionDto> addRemoteToTelevision(@PathVariable Long id, @RequestBody IdInputDto inputRemoteId) {
         TelevisionDto updatedTv = televisionService.assignRemoteControllerToTelevision(id, inputRemoteId);
+        return ResponseEntity.ok(updatedTv);
+    }
+
+    @PutMapping("/{id}/cimodule")
+    public ResponseEntity<TelevisionDto> addCiModuleToTelevision(@PathVariable Long id, @RequestBody IdInputDto inputCiModuleId) {
+        TelevisionDto updatedTv = televisionService.assignCiModuleToTelevision(id, inputCiModuleId);
+        return ResponseEntity.ok(updatedTv);
+    }
+
+    @PutMapping("/{id}/wallbracket")
+    public ResponseEntity<TelevisionDto> addWallBracketToTelevision(@PathVariable Long id, @RequestBody IdInputDto inputWallBracketId) {
+        TelevisionDto updatedTv = televisionService.assignWallBracketToTelevision(id, inputWallBracketId);
         return ResponseEntity.ok(updatedTv);
     }
 

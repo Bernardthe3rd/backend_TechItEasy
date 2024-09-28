@@ -27,7 +27,7 @@ public class RemoteControllerService {
         return remoteControllerMapper.remoteControllersToRemoteControllerDtos(remoteControllerRepository.findAll());
     }
 
-    public RemoteControllerDto getRemoteController(IdInputDto id) {
+    public RemoteControllerDto getRemoteController(Long id) {
         Optional<RemoteController> remoteControllerOptional = remoteControllerRepository.findById(id);
         if (remoteControllerOptional.isPresent()) {
             RemoteController remoteController = remoteControllerOptional.get();
@@ -42,7 +42,7 @@ public class RemoteControllerService {
         return remoteControllerMapper.toRemoteControllerDto(remoteControllerRepository.save(remoteController1));
     }
 
-    public RemoteControllerDto updateRemoteController(IdInputDto id, RemoteControllerInputDto remoteController) {
+    public RemoteControllerDto updateRemoteController(Long id, RemoteControllerInputDto remoteController) {
         RemoteController getRemoteController = remoteControllerRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Television with id " + id + " not found"));
         RemoteController updatedRemoteController = remoteControllerMapper.toRemoteController(remoteController, getRemoteController);
 //        updatedTelevision.setId(id);
@@ -50,7 +50,7 @@ public class RemoteControllerService {
     }
 
 
-    public RemoteControllerDto deleteRemoteController(IdInputDto id) {
+    public RemoteControllerDto deleteRemoteController(Long id) {
         remoteControllerRepository.deleteById(id);
         return null;
     }

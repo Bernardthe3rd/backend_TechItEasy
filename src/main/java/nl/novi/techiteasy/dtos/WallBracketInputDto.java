@@ -1,6 +1,5 @@
 package nl.novi.techiteasy.dtos;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
@@ -8,7 +7,7 @@ public class WallBracketInputDto {
 
     @NotNull(message = "size may not be empty")
     private String size;
-    @NotEmpty(message = "please fill in true or false if the bracket is adjustable")
+    @NotNull(message = "please fill in true or false if the bracket is adjustable")
     private boolean adjustable;
     @NotNull(message = "name may not be empty")
     private String name;
@@ -23,12 +22,12 @@ public class WallBracketInputDto {
         this.size = size;
     }
 
-    @NotEmpty(message = "please fill in true or false if the bracket is adjustable")
+    @NotNull(message = "please fill in true or false if the bracket is adjustable")
     public boolean isAdjustable() {
         return adjustable;
     }
 
-    public void setAdjustable(@NotEmpty(message = "please fill in true or false if the bracket is adjustable") boolean adjustable) {
+    public void setAdjustable(@NotNull(message = "please fill in true or false if the bracket is adjustable") boolean adjustable) {
         this.adjustable = adjustable;
     }
 

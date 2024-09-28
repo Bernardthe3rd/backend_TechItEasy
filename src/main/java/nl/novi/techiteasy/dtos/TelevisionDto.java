@@ -1,8 +1,11 @@
 package nl.novi.techiteasy.dtos;
 
-import nl.novi.techiteasy.AvailableSize;
+import nl.novi.techiteasy.models.CiModule;
+import nl.novi.techiteasy.models.RemoteController;
+import nl.novi.techiteasy.models.WallBracket;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class TelevisionDto {
 
@@ -25,7 +28,9 @@ public class TelevisionDto {
     private int originalStock;
     private int sold;
     private LocalDate lastSold;
-    public RemoteControllerDto remoteController;
+    public RemoteController remoteController;
+    public CiModule ciModule;
+    public List<WallBracket> wallBracket;
 
     public String getType() {
         return type;
@@ -169,5 +174,29 @@ public class TelevisionDto {
 
     public void setLastSold(LocalDate lastSold) {
         this.lastSold = lastSold;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public CiModule getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(CiModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public List<WallBracket> getWallBracket() {
+        return wallBracket;
+    }
+
+    public void setWallBracket(List<WallBracket> wallBracket) {
+        this.wallBracket = wallBracket;
     }
 }

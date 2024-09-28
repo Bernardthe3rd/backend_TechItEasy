@@ -32,6 +32,9 @@ public class TelevisionMapper {
         dto.setOriginalStock(television.getOriginalStock());
         dto.setSold(television.getSold());
         dto.setLastSold(television.getLastSold());
+        dto.setRemoteController(television.getRemoteController());
+        dto.setCiModule(television.getCiModule());
+        dto.setWallBracket(television.getWallBracket());
 
         return dto;
     }
