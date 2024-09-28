@@ -1,14 +1,13 @@
 package nl.novi.techiteasy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import nl.novi.techiteasy.AvailableSize;
 
 import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
+@Table(name = "Televisions")
 public class Television {
 
     @Id
@@ -33,29 +32,29 @@ public class Television {
     private int sold;
     private LocalDate lastSold;
 
-    public Television() {
-    }
-
-    public Television(Long id, String type, String brand, String name, double price, double availableSize, int refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, int originalStock, int sold, LocalDate lastSold) {
-        this.id = id;
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-        this.lastSold = lastSold;
-    }
+//    public Television() {
+//    }
+//
+//    public Television(Long id, String type, String brand, String name, double price, double availableSize, int refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, int originalStock, int sold, LocalDate lastSold) {
+//        this.id = id;
+//        this.type = type;
+//        this.brand = brand;
+//        this.name = name;
+//        this.price = price;
+//        this.availableSize = availableSize;
+//        this.refreshRate = refreshRate;
+//        this.screenType = screenType;
+//        this.screenQuality = screenQuality;
+//        this.smartTv = smartTv;
+//        this.wifi = wifi;
+//        this.voiceControl = voiceControl;
+//        this.hdr = hdr;
+//        this.bluetooth = bluetooth;
+//        this.ambiLight = ambiLight;
+//        this.originalStock = originalStock;
+//        this.sold = sold;
+//        this.lastSold = lastSold;
+//    }
 
     public Long getId() {
         return id;

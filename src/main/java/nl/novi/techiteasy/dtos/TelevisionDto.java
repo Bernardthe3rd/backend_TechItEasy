@@ -1,5 +1,7 @@
 package nl.novi.techiteasy.dtos;
 
+import nl.novi.techiteasy.AvailableSize;
+
 import java.time.LocalDate;
 
 public class TelevisionDto {

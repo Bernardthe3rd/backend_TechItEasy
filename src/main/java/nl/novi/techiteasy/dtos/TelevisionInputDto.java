@@ -3,6 +3,7 @@ package nl.novi.techiteasy.dtos;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.PositiveOrZero;
+import nl.novi.techiteasy.AvailableSize;
 
 import java.time.LocalDate;
 
