@@ -32,6 +32,9 @@ public class Television {
     private int sold;
     private LocalDate lastSold;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private RemoteController remoteController;
+
 //    public Television() {
 //    }
 //
@@ -198,5 +201,13 @@ public class Television {
 
     public void setLastSold(LocalDate lastSold) {
         this.lastSold = lastSold;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
     }
 }

@@ -17,6 +17,9 @@ public class RemoteController {
     private double price;
     private int originalStock;
 
+    @OneToOne(mappedBy = "remoteController")
+    private Television television;
+
 //    public RemoteController() {
 //    }
 //
@@ -84,5 +87,13 @@ public class RemoteController {
 
     public void setOriginalStock(int originalStock) {
         this.originalStock = originalStock;
+    }
+
+    public Television getTelevision() {
+        return television;
+    }
+
+    public void setTelevision(Television television) {
+        this.television = television;
     }
 }

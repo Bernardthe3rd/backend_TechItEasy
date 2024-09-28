@@ -1,6 +1,7 @@
 package nl.novi.techiteasy.controllers;
 
 import jakarta.validation.Valid;
+import nl.novi.techiteasy.dtos.IdInputDto;
 import nl.novi.techiteasy.dtos.RemoteControllerDto;
 import nl.novi.techiteasy.dtos.RemoteControllerInputDto;
 import nl.novi.techiteasy.repositories.RemoteControllerRepository;
@@ -30,7 +31,7 @@ public class RemoteControllerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<RemoteControllerDto> getRemoteControllerById(@PathVariable Long id) {
+    public ResponseEntity<RemoteControllerDto> getRemoteControllerById(@PathVariable IdInputDto id) {
         RemoteControllerDto oneRemoteController = remoteControllerService.getRemoteController(id);
         return ResponseEntity.ok(oneRemoteController);
     }
@@ -43,14 +44,14 @@ public class RemoteControllerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<RemoteControllerDto> updateRemoteController(@PathVariable Long id, @RequestBody RemoteControllerInputDto remoteController) {
+    public ResponseEntity<RemoteControllerDto> updateRemoteController(@PathVariable IdInputDto id, @RequestBody RemoteControllerInputDto remoteController) {
         RemoteControllerDto updatedRemoteController = remoteControllerService.updateRemoteController(id, remoteController);
         return ResponseEntity.ok(updatedRemoteController);
     }
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRemoteController(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteRemoteController(@PathVariable IdInputDto id) {
         remoteControllerService.deleteRemoteController(id);
         return ResponseEntity.noContent().build();
     }

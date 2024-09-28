@@ -1,6 +1,7 @@
 package nl.novi.techiteasy.controllers;
 
 import jakarta.validation.Valid;
+import nl.novi.techiteasy.dtos.IdInputDto;
 import nl.novi.techiteasy.dtos.TelevisionDto;
 import nl.novi.techiteasy.dtos.TelevisionInputDto;
 import nl.novi.techiteasy.repositories.TelevisionRepository;
@@ -53,6 +54,12 @@ public class TelevisionController {
     public ResponseEntity<Void> deleteTelevision(@PathVariable Long id) {
         televisionService.deleteTelevision(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}/remotecontroller")
+    public ResponseEntity<TelevisionDto> addRemoteToTelevision(@PathVariable Long id, @RequestBody IdInputDto inputRemoteId) {
+        TelevisionDto updatedTv = televisionService.assignRemoteControllerToTelevision(id, inputRemoteId);
+        return ResponseEntity.ok(updatedTv);
     }
 
 }

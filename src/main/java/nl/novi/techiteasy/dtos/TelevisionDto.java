@@ -25,6 +25,7 @@ public class TelevisionDto {
     private int originalStock;
     private int sold;
     private LocalDate lastSold;
+    public RemoteControllerDto remoteController;
 
     public String getType() {
         return type;

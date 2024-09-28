@@ -6,10 +6,12 @@ import nl.novi.techiteasy.exceptions.RecordNotFoundException;
 import nl.novi.techiteasy.mappers.WallBracketMapper;
 import nl.novi.techiteasy.models.WallBracket;
 import nl.novi.techiteasy.repositories.WallBracketRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class WallBracketService {
 
     private final WallBracketRepository wallBracketRepository;
