@@ -1,35 +1,57 @@
 package nl.novi.techiteasy.controllers;
 
-import nl.novi.techiteasy.models.Television;
+import jakarta.validation.Valid;
+import nl.novi.techiteasy.dtos.TelevisionDto;
+import nl.novi.techiteasy.dtos.TelevisionInputDto;
+import nl.novi.techiteasy.repositories.TelevisionRepository;
+import nl.novi.techiteasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/televisions")
 public class TelevisionController {
 
+    private final TelevisionService televisionService;
+    private final TelevisionRepository televisionRepository;
+
+    public TelevisionController(TelevisionService televisionService, TelevisionRepository televisionRepository) {
+        this.televisionService = televisionService;
+        this.televisionRepository = televisionRepository;
+    }
+
     @GetMapping
-    public ResponseEntity<String> getAllTelevisions() {
-        return ResponseEntity.ok("television");
+    public ResponseEntity<List<TelevisionDto>> getAllTelevisions() {
+        List<TelevisionDto> televisions = televisionService.getTelevisions();
+        return ResponseEntity.ok(televisions);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<String> getTelevisionById(@PathVariable String id) {
-        return ResponseEntity.ok("television1");
+    public ResponseEntity<TelevisionDto> getTelevisionById(@PathVariable Long id) {
+        TelevisionDto oneTelevision = televisionService.getTelevision(id);
+        return ResponseEntity.ok(oneTelevision);
     }
 
     @PostMapping
-    public ResponseEntity<String> addTelevision(@RequestBody Television television) {
-        return ResponseEntity.created(null).body("television");
+    public ResponseEntity<TelevisionDto> addTelevision(@Valid @RequestBody TelevisionInputDto dto) {
+        TelevisionDto television = televisionService.saveTelevision(dto);
+        URI location = URI.create("http://localhost:8080/televisions/" + television.getId());
+        return ResponseEntity.created(location).body(television);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateTelevision(@PathVariable String id, @RequestBody Television television) {
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<TelevisionDto> updateTelevision(@PathVariable Long id, @RequestBody TelevisionInputDto television) {
+        TelevisionDto updatedTelevision = televisionService.updateTelevision(id, television);
+        return ResponseEntity.ok(updatedTelevision);
     }
 
+
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTelevision(@PathVariable String id) {
+    public ResponseEntity<Void> deleteTelevision(@PathVariable Long id) {
+        televisionService.deleteTelevision(id);
         return ResponseEntity.noContent().build();
     }
 
