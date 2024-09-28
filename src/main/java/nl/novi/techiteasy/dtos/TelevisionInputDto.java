@@ -1,14 +1,11 @@
 package nl.novi.techiteasy.dtos;
 
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.PositiveOrZero;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 
-@Component
 public class TelevisionInputDto {
 
     @NotNull(message = "type may not be empty")
@@ -25,17 +22,17 @@ public class TelevisionInputDto {
     private String screenType;
     private String screenQuality;
 
-    @NotNull(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false, if it's a smartTv")
     private Boolean smartTv;
-    @NotNull(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false, if it has WIFI")
     private Boolean wifi;
-    @NotNull(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false, if it has voice control")
     private Boolean voiceControl;
-    @NotNull(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false, if it has HDR")
     private Boolean hdr;
-    @NotNull(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false, if it has bluetooth")
     private Boolean bluetooth;
-    @NotNull(message = "Please fill in true or false")
+    @NotNull(message = "Please fill in true or false, if it has ambilight")
     private Boolean ambiLight;
     private int originalStock;
     private int sold;

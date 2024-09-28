@@ -38,7 +38,7 @@ public class TelevisionController {
     @PostMapping
     public ResponseEntity<TelevisionDto> addTelevision(@Valid @RequestBody TelevisionInputDto dto) {
         TelevisionDto television = televisionService.saveTelevision(dto);
-        URI location = URI.create("/televisions");
+        URI location = URI.create("http://localhost:8080/televisions/" + television.getId());
         return ResponseEntity.created(location).body(television);
     }
 
@@ -50,9 +50,9 @@ public class TelevisionController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTelevision(@PathVariable Long id) {
-        TelevisionDto television = televisionService.deleteTelevision(id);
-        return ResponseEntity.ok("Television with " + id + "with name" + television + " has been successfully deleted");
+    public ResponseEntity<Void> deleteTelevision(@PathVariable Long id) {
+        televisionService.deleteTelevision(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

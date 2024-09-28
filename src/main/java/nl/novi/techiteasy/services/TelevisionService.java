@@ -32,7 +32,7 @@ public class TelevisionService {
             Television television = televisionOptional.get();
             return televisionMapper.toTelevisionDto(television);
         } else {
-            throw new RuntimeException("Television with id " + id + " not found");
+            throw new RecordNotFoundException("Television with id " + id + " not found");
         }
     }
 
@@ -42,7 +42,7 @@ public class TelevisionService {
     }
 
     public TelevisionDto updateTelevision(Long id, TelevisionInputDto television) {
-        Television getTelevision = televisionRepository.findById(id).orElseThrow(() -> new RecordNotFoundException());
+        Television getTelevision = televisionRepository.findById(id).orElseThrow(() -> new RecordNotFoundException("Television with id " + id + " not found"));
         Television updatedTelevision = televisionMapper.toTelevision(television, getTelevision);
 //        updatedTelevision.setId(id);
         return televisionMapper.toTelevisionDto(televisionRepository.save(updatedTelevision));

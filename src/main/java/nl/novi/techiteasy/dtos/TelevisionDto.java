@@ -1,10 +1,7 @@
 package nl.novi.techiteasy.dtos;
 
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDate;
 
-@Component
 public class TelevisionDto {
 
     //    dit veld mag in je output dto komen.
