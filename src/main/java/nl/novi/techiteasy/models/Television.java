@@ -1,14 +1,14 @@
 package nl.novi.techiteasy.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import nl.novi.techiteasy.AvailableSize;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Table(name = "Televisions")
 public class Television {
 
     @Id
@@ -19,8 +19,9 @@ public class Television {
     private String brand;
     private String name;
     private double price;
-    private double availableSize;
-    private int refreshRate;
+    @Enumerated(EnumType.STRING)
+    private AvailableSize availableSize;
+    private Integer refreshRate;
     private String screenType;
     private String screenQuality;
     private Boolean smartTv;
@@ -29,33 +30,48 @@ public class Television {
     private Boolean hdr;
     private Boolean bluetooth;
     private Boolean ambiLight;
-    private int originalStock;
-    private int sold;
+    private Integer originalStock;
+    private Integer sold;
     private LocalDate lastSold;
 
-    public Television() {
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private RemoteController remoteController;
 
-    public Television(Long id, String type, String brand, String name, double price, double availableSize, int refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, int originalStock, int sold, LocalDate lastSold) {
-        this.id = id;
-        this.type = type;
-        this.brand = brand;
-        this.name = name;
-        this.price = price;
-        this.availableSize = availableSize;
-        this.refreshRate = refreshRate;
-        this.screenType = screenType;
-        this.screenQuality = screenQuality;
-        this.smartTv = smartTv;
-        this.wifi = wifi;
-        this.voiceControl = voiceControl;
-        this.hdr = hdr;
-        this.bluetooth = bluetooth;
-        this.ambiLight = ambiLight;
-        this.originalStock = originalStock;
-        this.sold = sold;
-        this.lastSold = lastSold;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ci_module_id")
+    private CiModule ciModule;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "television_wallbrackets",
+            joinColumns = @JoinColumn(name = "television"),
+            inverseJoinColumns = @JoinColumn(name = "wallbracket")
+    )
+    private List<WallBracket> wallBracket;
+
+//    public Television() {
+//    }
+//
+//    public Television(Long id, String type, String brand, String name, double price, double availableSize, int refreshRate, String screenType, String screenQuality, Boolean smartTv, Boolean wifi, Boolean voiceControl, Boolean hdr, Boolean bluetooth, Boolean ambiLight, int originalStock, int sold, LocalDate lastSold) {
+//        this.id = id;
+//        this.type = type;
+//        this.brand = brand;
+//        this.name = name;
+//        this.price = price;
+//        this.availableSize = availableSize;
+//        this.refreshRate = refreshRate;
+//        this.screenType = screenType;
+//        this.screenQuality = screenQuality;
+//        this.smartTv = smartTv;
+//        this.wifi = wifi;
+//        this.voiceControl = voiceControl;
+//        this.hdr = hdr;
+//        this.bluetooth = bluetooth;
+//        this.ambiLight = ambiLight;
+//        this.originalStock = originalStock;
+//        this.sold = sold;
+//        this.lastSold = lastSold;
+//    }
 
     public Long getId() {
         return id;
@@ -97,11 +113,11 @@ public class Television {
         this.price = price;
     }
 
-    public double getAvailableSize() {
+    public AvailableSize getAvailableSize() {
         return availableSize;
     }
 
-    public void setAvailableSize(double availableSize) {
+    public void setAvailableSize(AvailableSize availableSize) {
         this.availableSize = availableSize;
     }
 
@@ -199,5 +215,29 @@ public class Television {
 
     public void setLastSold(LocalDate lastSold) {
         this.lastSold = lastSold;
+    }
+
+    public RemoteController getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteController remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public CiModule getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(CiModule ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public List<WallBracket> getWallBracket() {
+        return wallBracket;
+    }
+
+    public void setWallBracket(List<WallBracket> wallBracket) {
+        this.wallBracket = wallBracket;
     }
 }

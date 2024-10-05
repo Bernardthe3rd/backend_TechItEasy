@@ -1,6 +1,9 @@
 package nl.novi.techiteasy.dtos;
 
+import nl.novi.techiteasy.AvailableSize;
+
 import java.time.LocalDate;
+import java.util.List;
 
 public class TelevisionDto {
 
@@ -10,7 +13,7 @@ public class TelevisionDto {
     private String brand;
     private String name;
     private double price;
-    private double availableSize;
+    private AvailableSize availableSize;
     private int refreshRate;
     private String screenType;
     private String screenQuality;
@@ -23,6 +26,9 @@ public class TelevisionDto {
     private int originalStock;
     private int sold;
     private LocalDate lastSold;
+    public RemoteControllerDto remoteController;
+    public CiModuleDto ciModule;
+    public List<WallBracketDto> wallBracket;
 
     public String getType() {
         return type;
@@ -64,11 +70,11 @@ public class TelevisionDto {
         this.price = price;
     }
 
-    public double getAvailableSize() {
+    public AvailableSize getAvailableSize() {
         return availableSize;
     }
 
-    public void setAvailableSize(double availableSize) {
+    public void setAvailableSize(AvailableSize availableSize) {
         this.availableSize = availableSize;
     }
 
@@ -166,5 +172,29 @@ public class TelevisionDto {
 
     public void setLastSold(LocalDate lastSold) {
         this.lastSold = lastSold;
+    }
+
+    public RemoteControllerDto getRemoteController() {
+        return remoteController;
+    }
+
+    public void setRemoteController(RemoteControllerDto remoteController) {
+        this.remoteController = remoteController;
+    }
+
+    public CiModuleDto getCiModule() {
+        return ciModule;
+    }
+
+    public void setCiModule(CiModuleDto ciModule) {
+        this.ciModule = ciModule;
+    }
+
+    public List<WallBracketDto> getWallBracket() {
+        return wallBracket;
+    }
+
+    public void setWallBracket(List<WallBracketDto> wallBracket) {
+        this.wallBracket = wallBracket;
     }
 }

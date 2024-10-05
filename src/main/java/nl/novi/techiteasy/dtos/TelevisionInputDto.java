@@ -3,6 +3,7 @@ package nl.novi.techiteasy.dtos;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.PositiveOrZero;
+import nl.novi.techiteasy.AvailableSize;
 
 import java.time.LocalDate;
 
@@ -17,7 +18,7 @@ public class TelevisionInputDto {
     @PositiveOrZero(message = "price has to be zero or a positive value")
     private double price;
 
-    private double availableSize;
+    private AvailableSize availableSize;
     private int refreshRate;
     private String screenType;
     private String screenQuality;
@@ -72,11 +73,11 @@ public class TelevisionInputDto {
         this.price = price;
     }
 
-    public double getAvailableSize() {
+    public AvailableSize getAvailableSize() {
         return availableSize;
     }
 
-    public void setAvailableSize(double availableSize) {
+    public void setAvailableSize(AvailableSize availableSize) {
         this.availableSize = availableSize;
     }
 
