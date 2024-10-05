@@ -1,8 +1,6 @@
 package nl.novi.techiteasy.dtos;
 
-import nl.novi.techiteasy.models.CiModule;
-import nl.novi.techiteasy.models.RemoteController;
-import nl.novi.techiteasy.models.WallBracket;
+import nl.novi.techiteasy.AvailableSize;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -15,7 +13,7 @@ public class TelevisionDto {
     private String brand;
     private String name;
     private double price;
-    private double availableSize;
+    private AvailableSize availableSize;
     private int refreshRate;
     private String screenType;
     private String screenQuality;
@@ -28,9 +26,9 @@ public class TelevisionDto {
     private int originalStock;
     private int sold;
     private LocalDate lastSold;
-    public RemoteController remoteController;
-    public CiModule ciModule;
-    public List<WallBracket> wallBracket;
+    public RemoteControllerDto remoteController;
+    public CiModuleDto ciModule;
+    public List<WallBracketDto> wallBracket;
 
     public String getType() {
         return type;
@@ -72,11 +70,11 @@ public class TelevisionDto {
         this.price = price;
     }
 
-    public double getAvailableSize() {
+    public AvailableSize getAvailableSize() {
         return availableSize;
     }
 
-    public void setAvailableSize(double availableSize) {
+    public void setAvailableSize(AvailableSize availableSize) {
         this.availableSize = availableSize;
     }
 
@@ -176,27 +174,27 @@ public class TelevisionDto {
         this.lastSold = lastSold;
     }
 
-    public RemoteController getRemoteController() {
+    public RemoteControllerDto getRemoteController() {
         return remoteController;
     }
 
-    public void setRemoteController(RemoteController remoteController) {
+    public void setRemoteController(RemoteControllerDto remoteController) {
         this.remoteController = remoteController;
     }
 
-    public CiModule getCiModule() {
+    public CiModuleDto getCiModule() {
         return ciModule;
     }
 
-    public void setCiModule(CiModule ciModule) {
+    public void setCiModule(CiModuleDto ciModule) {
         this.ciModule = ciModule;
     }
 
-    public List<WallBracket> getWallBracket() {
+    public List<WallBracketDto> getWallBracket() {
         return wallBracket;
     }
 
-    public void setWallBracket(List<WallBracket> wallBracket) {
+    public void setWallBracket(List<WallBracketDto> wallBracket) {
         this.wallBracket = wallBracket;
     }
 }

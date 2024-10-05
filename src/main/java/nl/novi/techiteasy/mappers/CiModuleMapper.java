@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class CiModuleMapper {
 
-    public CiModuleDto toCimoduleDto(CiModule ciModule) {
+    public static CiModuleDto toCimoduleDto(CiModule ciModule) {
         var dto = new CiModuleDto();
 
         dto.setId(ciModule.getId());

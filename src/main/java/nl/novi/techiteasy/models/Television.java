@@ -19,8 +19,9 @@ public class Television {
     private String brand;
     private String name;
     private double price;
-    private double availableSize;
-    private int refreshRate;
+    @Enumerated(EnumType.STRING)
+    private AvailableSize availableSize;
+    private Integer refreshRate;
     private String screenType;
     private String screenQuality;
     private Boolean smartTv;
@@ -29,8 +30,8 @@ public class Television {
     private Boolean hdr;
     private Boolean bluetooth;
     private Boolean ambiLight;
-    private int originalStock;
-    private int sold;
+    private Integer originalStock;
+    private Integer sold;
     private LocalDate lastSold;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -112,11 +113,11 @@ public class Television {
         this.price = price;
     }
 
-    public double getAvailableSize() {
+    public AvailableSize getAvailableSize() {
         return availableSize;
     }
 
-    public void setAvailableSize(double availableSize) {
+    public void setAvailableSize(AvailableSize availableSize) {
         this.availableSize = availableSize;
     }
 

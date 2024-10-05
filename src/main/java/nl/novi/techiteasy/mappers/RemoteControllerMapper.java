@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class RemoteControllerMapper {
 
-    public RemoteControllerDto toRemoteControllerDto(RemoteController remoteController) {
+    public static RemoteControllerDto toRemoteControllerDto(RemoteController remoteController) {
         var dto = new RemoteControllerDto();
 
         dto.setId(remoteController.getId());

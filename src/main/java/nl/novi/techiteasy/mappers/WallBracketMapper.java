@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class WallBracketMapper {
 
-    public WallBracketDto toWallBracketDto(WallBracket wallBracket) {
+    public static WallBracketDto toWallBracketDto(WallBracket wallBracket) {
         var dto = new WallBracketDto();
 
         dto.setId(wallBracket.getId());
@@ -38,7 +38,7 @@ public class WallBracketMapper {
         return bracket;
     }
 
-    public List<WallBracketDto> wallBracketsToWallBracketDtos(List<WallBracket> wallBrackets) {
+    public static List<WallBracketDto> wallBracketsToWallBracketDtos(List<WallBracket> wallBrackets) {
         List<WallBracketDto> dtos = new ArrayList<>();
         for (WallBracket wallBracket : wallBrackets) {
             WallBracketDto dto = toWallBracketDto(wallBracket);

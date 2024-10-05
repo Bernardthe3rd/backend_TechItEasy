@@ -18,7 +18,7 @@ public class TelevisionInputDto {
     @PositiveOrZero(message = "price has to be zero or a positive value")
     private double price;
 
-    private double availableSize;
+    private AvailableSize availableSize;
     private int refreshRate;
     private String screenType;
     private String screenQuality;
@@ -73,11 +73,11 @@ public class TelevisionInputDto {
         this.price = price;
     }
 
-    public double getAvailableSize() {
+    public AvailableSize getAvailableSize() {
         return availableSize;
     }
 
-    public void setAvailableSize(double availableSize) {
+    public void setAvailableSize(AvailableSize availableSize) {
         this.availableSize = availableSize;
     }
 

@@ -32,9 +32,15 @@ public class TelevisionMapper {
         dto.setOriginalStock(television.getOriginalStock());
         dto.setSold(television.getSold());
         dto.setLastSold(television.getLastSold());
-        dto.setRemoteController(television.getRemoteController());
-        dto.setCiModule(television.getCiModule());
-        dto.setWallBracket(television.getWallBracket());
+        if (television.getRemoteController() != null) {
+            dto.setRemoteController(RemoteControllerMapper.toRemoteControllerDto(television.getRemoteController()));
+        }
+        if (television.getCiModule() != null) {
+            dto.setCiModule(CiModuleMapper.toCimoduleDto(television.getCiModule()));
+        }
+        if (television.getWallBracket() != null) {
+            dto.setWallBracket(WallBracketMapper.wallBracketsToWallBracketDtos(television.getWallBracket()));
+        }
 
         return dto;
     }

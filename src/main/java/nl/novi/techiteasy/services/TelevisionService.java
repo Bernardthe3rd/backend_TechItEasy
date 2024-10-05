@@ -97,14 +97,14 @@ public class TelevisionService {
 
     public TelevisionDto assignWallBracketToTelevision(long id, IdInputDto wallBracketId) {
         Long getWallBracketId = wallBracketId.getId();
-        List<WallBracket> wallBrackets = new ArrayList<>();
         Optional<WallBracket> wallBracketOptional = wallBracketRepository.findById(getWallBracketId);
         Optional<Television> televisionOptional = televisionRepository.findById(id);
         if (wallBracketOptional.isPresent() && televisionOptional.isPresent()) {
             WallBracket wallBracket = wallBracketOptional.get();
             Television television = televisionOptional.get();
-            wallBrackets.add(wallBracket);
-            television.setWallBracket(wallBrackets);
+            List<WallBracket> currentWallBrackets = television.getWallBracket();
+            currentWallBrackets.add(wallBracket);
+            television.setWallBracket(currentWallBrackets);
             return televisionMapper.toTelevisionDto(televisionRepository.save(television));
         } else {
             throw new RecordNotFoundException("Wall bracket with id " + wallBracketId + " not found");
