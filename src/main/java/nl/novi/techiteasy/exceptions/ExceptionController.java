@@ -20,4 +20,16 @@ public class ExceptionController {
         return new ResponseEntity<>(message, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(value = {UsernameNotFoundException.class})
+    public ResponseEntity<Object> handleUsernameNotFoundException(UsernameNotFoundException exception) {
+        String message = exception.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(value = {BadRequestException.class})
+    public ResponseEntity<Object> handleBadRequestException(BadRequestException exception) {
+        String message = exception.getMessage();
+        return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+    }
+
 }
