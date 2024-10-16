@@ -7,6 +7,7 @@ import nl.novi.techiteasy.models.Role;
 import nl.novi.techiteasy.models.User;
 import nl.novi.techiteasy.repositories.UserRepository;
 import nl.novi.techiteasy.utils.RandomStringGenerator;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -19,10 +20,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public List<UserDto> getUsers() {
@@ -31,6 +34,7 @@ public class UserService {
         for (User user : currentList) {
             collection.add(userMapper.fromUserToUserDto(user));
         }
+        return collection;
     }
 
     public UserDto getUserByUsername(String username) {
@@ -51,6 +55,7 @@ public class UserService {
     public String createUser(UserDto userDto) {
         String randomString = RandomStringGenerator.generateAlphaNumeric(20);
         userDto.setApiKey(randomString);
+        userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         User newUser = userRepository.save(userMapper.fromUserDtoToUser(userDto));
         return newUser.getUsername();
     }

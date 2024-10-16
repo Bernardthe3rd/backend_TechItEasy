@@ -48,5 +48,7 @@ public class AuthenticationController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         final String token = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthenticationOutputDto(token));
+
     }
+
 }
