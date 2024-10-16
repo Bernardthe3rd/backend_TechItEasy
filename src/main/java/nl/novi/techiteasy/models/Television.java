@@ -37,7 +37,7 @@ public class Television {
     @OneToOne(cascade = CascadeType.ALL)
     private RemoteController remoteController;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ci_module_id")
     private CiModule ciModule;
 
