@@ -27,7 +27,7 @@ public class User {
             cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.EAGER)
-    private Set<Role> authorities = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     @Column(nullable = false)
     private boolean enabled;
@@ -37,11 +37,11 @@ public class User {
     private String apiKey;
 
     public void addAuthority(Role role) {
-        this.authorities.add(role);
+        this.roles.add(role);
     }
 
     public void removeAuthority(Role role) {
-        this.authorities.remove(role);
+        this.roles.remove(role);
     }
 
 }
