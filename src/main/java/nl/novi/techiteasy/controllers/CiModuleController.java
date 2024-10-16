@@ -7,6 +7,7 @@ import nl.novi.techiteasy.repositories.CiModuleRepository;
 import nl.novi.techiteasy.services.CiModuleService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
@@ -38,8 +39,12 @@ public class CiModuleController {
     @PostMapping
     public ResponseEntity<CiModuleDto> addCiModule(@Valid @RequestBody CiModuleInputDto dto) {
         CiModuleDto module = ciModuleService.saveCiModule(dto);
-        URI location = URI.create("http://localhost:8080/televisions/" + module.getId());
-        return ResponseEntity.created(location).body(module);
+        URI locationDynamic = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(module.getId())
+                .toUri();
+        return ResponseEntity.created(locationDynamic).body(module);
     }
 
     @PutMapping("/{id}")

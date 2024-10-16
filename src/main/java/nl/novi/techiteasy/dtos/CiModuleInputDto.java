@@ -12,28 +12,27 @@ public class CiModuleInputDto {
     @PositiveOrZero(message = "price has to be zero or a positive number")
     private double price;
 
-    public @NotNull(message = "name may not be empty") String getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(@NotNull(message = "name may not be empty") String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public @NotNull(message = "type may not be empty") String getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(@NotNull(message = "type may not be empty") String type) {
+    public void setType(String type) {
         this.type = type;
     }
 
-    @PositiveOrZero(message = "price has to be zero or a positive number")
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(@PositiveOrZero(message = "price has to be zero or a positive number") double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 }

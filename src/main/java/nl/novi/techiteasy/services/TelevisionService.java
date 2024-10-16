@@ -62,9 +62,8 @@ public class TelevisionService {
         return televisionMapper.toTelevisionDto(televisionRepository.save(updatedTelevision));
     }
 
-    public TelevisionDto deleteTelevision(Long id) {
+    public void deleteTelevision(Long id) {
         televisionRepository.deleteById(id);
-        return null;
     }
 
     public TelevisionDto assignRemoteControllerToTelevision(long id, IdInputDto remoteControllerId) {
