@@ -20,3 +20,11 @@ INSERT INTO public.wallbrackets(size, adjustable, name, price)
 VALUES ('100x100', true, 'AOC', 99.99),
        ('75x75', false, 'samsung', 49.99),
        ('150x150', true, 'benco', 29.99);
+
+INSERT INTO public.users(username, password, enabled, api_key, email)
+VALUES ('ben', '$2a$10$7QyWjU7.KdYQwZ8fTDR.J.lbrEixk7Qx.qv0oaP5yTeSfTfNqQfBi', true, 'soortapikey', 'hello@hello.com'),
+       ('fiep', '$2a$10$aPpRcVhHv8o/A3ZarYlEJODNizTjNTFpAoXkd6GHoK48N7QnBsclK', true, 'anotherkey', 'hello2@live.com');
+
+INSERT INTO public.roles(username, role)
+VALUES ('ben', 'USER'),
+       ('fem', 'ADMIN')
